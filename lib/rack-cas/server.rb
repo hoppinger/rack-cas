@@ -10,7 +10,7 @@ module RackCAS
 
     def login_url(service_url, params = {})
       service_url = URL.parse(service_url).to_s
-      base_params = {service: service_url}
+      base_params = {service: service_url, locale: I18n.locale}
       base_params[:renew] = true if RackCAS.config.renew?
 
       @url.dup.append_path('login').add_params(base_params.merge(params))
